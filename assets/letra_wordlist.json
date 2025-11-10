@@ -1,0 +1,614 @@
+{
+  "Food": [
+    {
+      "word": "pizza",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "croissant",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "taco",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "pasta",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "sushi",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "burger",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "salad",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "steak",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "sandwich",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "ramen",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "omelette",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "burrito",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "noodles",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "donut",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "bagel",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "fries",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "cheesecake",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "pancake",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "ice cream",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "soup",
+      "count": 0,
+      "used_dates": []
+    }
+  ],
+  "US States": [
+    {
+      "word": "California",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Texas",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Florida",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "New York",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Illinois",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Pennsylvania",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Ohio",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Georgia",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "North Carolina",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Michigan",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Virginia",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Washington",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Arizona",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Massachusetts",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Indiana",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Tennessee",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Missouri",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Maryland",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Wisconsin",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Colorado",
+      "count": 0,
+      "used_dates": []
+    }
+  ],
+  "Countries": [
+    {
+      "word": "United States",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Canada",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Mexico",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Brazil",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "United Kingdom",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "France",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Germany",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Italy",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Spain",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "China",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Japan",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "India",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Australia",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "South Korea",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Argentina",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Egypt",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "South Africa",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Sweden",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Norway",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Netherlands",
+      "count": 0,
+      "used_dates": []
+    }
+  ],
+  "Major Cities": [
+    {
+      "word": "New York",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Los Angeles",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Chicago",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "London",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Paris",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Tokyo",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Seoul",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Beijing",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Shanghai",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Mexico City",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Toronto",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Berlin",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Madrid",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Rome",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Sydney",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Buenos Aires",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Cairo",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Moscow",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Dubai",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "Singapore",
+      "count": 0,
+      "used_dates": []
+    }
+  ],
+  "Household Items": [
+    {
+      "word": "chair",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "table",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "lamp",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "sofa",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "television",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "bed",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "mirror",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "clock",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "cup",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "plate",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "spoon",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "fork",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "knife",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "toaster",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "microwave",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "blanket",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "pillow",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "rug",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "curtain",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "desk",
+      "count": 0,
+      "used_dates": []
+    }
+  ],
+  "Sports": [
+    {
+      "word": "soccer",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "basketball",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "baseball",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "tennis",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "golf",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "hockey",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "football",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "volleyball",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "rugby",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "swimming",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "boxing",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "wrestling",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "cricket",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "badminton",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "skiing",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "surfing",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "skateboarding",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "cycling",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "running",
+      "count": 0,
+      "used_dates": []
+    },
+    {
+      "word": "bowling",
+      "count": 0,
+      "used_dates": []
+    }
+  ]
+}
