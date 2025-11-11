@@ -1,5 +1,5 @@
 import { useRouter } from 'expo-router';
-import React, { useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import wordlist from '../assets/letra_wordlist.json';
@@ -10,6 +10,7 @@ type WordList = Record<string, { word: string }[]>;
 
 export default function RelaxPractice() {
   const router = useRouter();
+  const inputRef = useRef<any>(null);
   const [selectedTheme, setSelectedTheme] = useState<string | null>(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [words, setWords] = useState<string[]>([]);
@@ -38,6 +39,8 @@ export default function RelaxPractice() {
       setSolved(false);
       setFinished(false);
       setIsPlaying(true);
+      // focus input after starting
+      setTimeout(() => inputRef.current?.focus?.(), 80);
     }
   };
 
@@ -77,6 +80,8 @@ export default function RelaxPractice() {
       setAnswer('');
       setRevealed(false);
       setSolved(false);
+      // focus input after moving to next
+      setTimeout(() => inputRef.current?.focus?.(), 80);
     } else {
       // finished
       setFinished(true);

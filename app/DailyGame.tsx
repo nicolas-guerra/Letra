@@ -151,7 +151,8 @@ export default function DailyGame({ route, navigation }: Props) {
               timerRef.current = null;
             }
             setGameStarted(false);
-            endGame(mode === 'daily');
+            // When timer runs out, final score is just the current score (no time bonus)
+            endGame(mode === 'daily', score);
             return 0;
           }
           return t - 1;
@@ -164,7 +165,7 @@ export default function DailyGame({ route, navigation }: Props) {
         timerRef.current = null;
       }
     };
-  }, [gameStarted, timed]); // Timer logic remains conditional on `timed`
+  }, [gameStarted, timed, score]); // Added score to dependency array
 
   useEffect(() => {
     if (words.length > 0 && index < words.length) {
@@ -173,13 +174,14 @@ export default function DailyGame({ route, navigation }: Props) {
     }
   }, [index, words]);
 
-  async function endGame(saveDaily = false) {
+  async function endGame(saveDaily = false, finalScoreOverride?: number) {
     if (timerRef.current) {
       clearInterval(timerRef.current);
       timerRef.current = null;
     }
     setGameStarted(false);
-    const final = score + (timed ? timeLeft : 0); // Corrected score calculation
+    // If a final score override is provided (e.g., from timer), use it; otherwise calculate
+    const final = finalScoreOverride !== undefined ? finalScoreOverride : score + (timed ? timeLeft : 0);
     setFinalScore(final);
 
     if (saveDaily && runDate) {
@@ -212,18 +214,24 @@ export default function DailyGame({ route, navigation }: Props) {
         setIndex(i => i + 1);
         setAnswer('');
       } else {
+        // Last word is correct; calculate final score with the incremented score
         const newScore = score + 1;
-        setScore(newScore);
         const final = timed ? newScore + timeLeft : newScore;
+        setScore(newScore);
         setFinalScore(final);
-        await endGame(mode === 'daily');
+        setGameStarted(false);
+        if (timerRef.current) {
+          clearInterval(timerRef.current);
+          timerRef.current = null;
+        }
         if (mode === 'daily' && runDate) {
+          await incrementWordMetaForWords(words, runDate);
           await saveDailyResult(runDate, {
             date: runDate,
             theme: runTheme,
             words,
             score: newScore,
-            timeLeft,
+            timeLeft: timed ? timeLeft : 0,
             finalScore: final,
             timestamp: Date.now(),
           });
@@ -274,7 +282,17 @@ export default function DailyGame({ route, navigation }: Props) {
           </View>
         ) : (
           <View>
-            <Text style={styles.timer}>{timed ? `⏱ ${timeLeft}s` : 'Relax mode — no timer'}</Text>
+            {/* Progress row: counter | progress bar | timer */}
+            {(mode === 'daily' || timed) && (
+              <View style={styles.progressRow}>
+                <Text style={styles.progressCounter}>{score}/{words.length}</Text>
+                <View style={styles.progressBarContainer}>
+                  <View style={[styles.progressBarFill, { width: `${(words.length > 0 ? (score / words.length) * 100 : 0)}%` }]} />
+                </View>
+                <Text style={styles.progressTimer}>{timed ? `⏱ ${timeLeft}s` : ''}</Text>
+              </View>
+            )}
+
             <Text style={styles.scrambled}>{scrambled}</Text>
             <TextInput
               style={styles.input}
@@ -284,8 +302,6 @@ export default function DailyGame({ route, navigation }: Props) {
               autoCapitalize="characters"
               autoCorrect={false}
             />
-            <Text style={styles.info}>Word {Math.min(index + 1, words.length)}/{words.length}</Text>
-            <Text style={styles.info}>Score: {score}</Text>
             <View style={{ height: 12 }} />
             <Button title="End Game" onPress={() => endGame(mode === 'daily')} />
           </View>
