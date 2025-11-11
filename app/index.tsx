@@ -4,7 +4,7 @@ import { Asset } from 'expo-asset';
 import * as Font from 'expo-font';
 import { StatusBar } from 'expo-status-bar';
 import React, { useEffect, useState } from 'react';
-import { ActivityIndicator, View } from 'react-native';
+import { ActivityIndicator, Image, View } from 'react-native';
 
 import HomeTab from './HomeTab';
 
@@ -49,6 +49,12 @@ export default function AppEntry() {
   return (
     <>
       <StatusBar hidden />
+      {/* Preload images invisibly to keep them in memory */}
+      <View style={{ display: 'none' }}>
+        <Image source={require('../assets/sun.png')} />
+        <Image source={require('../assets/grass.png')} />
+        <Image source={require('../assets/tree.png')} />
+      </View>
       <HomeTab />
     </>
   );

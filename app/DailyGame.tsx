@@ -151,8 +151,6 @@ export default function DailyGame({ route, navigation }: Props) {
               timerRef.current = null;
             }
             setGameStarted(false);
-            setFinalScore(score + 0);
-            setTimeLeft(0);
             endGame(mode === 'daily');
             return 0;
           }
@@ -166,8 +164,7 @@ export default function DailyGame({ route, navigation }: Props) {
         timerRef.current = null;
       }
     };
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [gameStarted, timed]);
+  }, [gameStarted, timed]); // Timer logic remains conditional on `timed`
 
   useEffect(() => {
     if (words.length > 0 && index < words.length) {
@@ -182,7 +179,7 @@ export default function DailyGame({ route, navigation }: Props) {
       timerRef.current = null;
     }
     setGameStarted(false);
-    const final = timed ? score + timeLeft : score;
+    const final = score + (timed ? timeLeft : 0); // Corrected score calculation
     setFinalScore(final);
 
     if (saveDaily && runDate) {
@@ -192,7 +189,7 @@ export default function DailyGame({ route, navigation }: Props) {
         theme: runTheme,
         words,
         score,
-        timeLeft,
+        timeLeft: timed ? timeLeft : 0, // Ensure timeLeft is 0 for Relax mode
         finalScore: final,
         timestamp: Date.now(),
       };

@@ -1,5 +1,5 @@
 // app/styles.ts
-import { Dimensions, Platform, StyleSheet } from 'react-native';
+import { Dimensions, StyleSheet } from 'react-native';
 const { width, height } = Dimensions.get('window');
 
 export default StyleSheet.create({
@@ -34,7 +34,8 @@ export default StyleSheet.create({
   },
   // typewriter-style font to use on practice screen
   typewriter: {
-    fontFamily: Platform.select({ ios: 'Courier', android: 'monospace', default: 'Courier New' }),
+    // use CrayonLibre for consistency across the app
+    fontFamily: 'CrayonLibre',
   },
   buttonStack: {
     marginTop: 8,
@@ -80,7 +81,7 @@ export default StyleSheet.create({
     elevation: 6,
   },
   pillTextType: {
-    fontFamily: Platform.select({ ios: 'Courier', android: 'monospace', default: 'Courier New' }),
+    fontFamily: 'CrayonLibre',
     fontSize: 20,
     color: '#000',
   },
@@ -116,12 +117,12 @@ export default StyleSheet.create({
   appContainer: { flex: 1, padding: 16, backgroundColor: '#FFF8E7' },
   appTitle: { fontSize: 22, fontWeight: '700', marginBottom: 8, textAlign: 'center' },
   row: { padding: 12, backgroundColor: '#FFF', borderRadius: 10, marginBottom: 10, flexDirection: 'row', justifyContent: 'space-between', alignItems: 'center' },
-  themeName: { fontSize: 16, fontWeight: '600' },
-  meta: { fontSize: 12, color: '#666' },
-  metaSmall: { fontSize: 12, color: '#666', marginTop: 6 },
-  note: { fontSize: 12, color: '#666', marginTop: 8, textAlign: 'center' },
-  timer: { fontSize: 20, textAlign: 'center', marginBottom: 12 },
-  scrambled: { fontSize: 36, letterSpacing: 4, textAlign: 'center', marginVertical: 16 },
+  themeName: { fontSize: 16, fontWeight: '600', fontFamily: 'CrayonLibre' },
+  meta: { fontSize: 12, color: '#666', fontFamily: 'CrayonLibre' },
+  metaSmall: { fontSize: 12, color: '#666', marginTop: 6, fontFamily: 'CrayonLibre' },
+  note: { fontSize: 12, color: '#666', marginTop: 8, textAlign: 'center', fontFamily: 'CrayonLibre' },
+  timer: { fontSize: 20, textAlign: 'center', marginBottom: 12, fontFamily: 'CrayonLibre' },
+  scrambled: { fontSize: 36, letterSpacing: 4, textAlign: 'center', marginVertical: 16, fontFamily: 'CrayonLibre' },
   input: { borderWidth: 1, borderColor: '#E0E0E0', padding: 10, borderRadius: 8, backgroundColor: 'white' },
-  info: { textAlign: 'center', marginVertical: 6 },
+  info: { textAlign: 'center', marginVertical: 6, fontFamily: 'CrayonLibre' },
 });
