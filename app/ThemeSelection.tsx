@@ -23,24 +23,29 @@ export default function ThemeSelection() {
             <TouchableOpacity
               style={[
                 styles.buttonPillType,
-                selectedTheme === t && { backgroundColor: '#FFF8E7' }, // Highlight selected theme
+                selectedTheme === t && { backgroundColor: '#79D475' }, // Green when selected
               ]}
-              onPress={() => setSelectedTheme(t)}
+              onPress={() => {
+                if (selectedTheme === t) {
+                  // If already selected, start the game
+                  router.push(`/DailyGame?mode=practice&theme=${encodeURIComponent(t)}`);
+                } else {
+                  // If not selected, just select it
+                  setSelectedTheme(t);
+                }
+              }}
             >
-              <Text style={styles.pillTextType}>{t}</Text>
+              <Text style={styles.pillTextType}>
+                {selectedTheme === t ? `Start ${t}` : t}
+              </Text>
             </TouchableOpacity>
           </View>
         ))}
 
-        {selectedTheme && ( // Only show the Start Practice button if a theme is selected
-          <TouchableOpacity
-            style={[styles.buttonPillType, { backgroundColor: '#79D475', marginTop: 24 }]}
-            onPress={() => {
-              router.push(`/DailyGame?mode=practice&theme=${encodeURIComponent(selectedTheme)}`);
-            }}
-          >
-            <Text style={styles.pillTextType}>Start Practice</Text>
-          </TouchableOpacity>
+        {selectedTheme && ( // Show hint or alternative press instruction
+          <Text style={[styles.pillTextType, { textAlign: 'center', marginTop: 12, color: '#fff' }]}>
+            Press again to start
+          </Text>
         )}
       </ScrollView>
     </SafeAreaView>

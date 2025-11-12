@@ -28,7 +28,7 @@ export default function PracticeTab() {
           style={[styles.buttonPillType, { marginTop: 16 }]}
           onPress={() => router.push('/RelaxPractice')}
         >
-          <Text style={styles.pillTextType}>Relax (no timer)</Text>
+          <Text style={styles.pillTextType}>Relax</Text>
         </TouchableOpacity>
       </ScrollView>
     </SafeAreaView>

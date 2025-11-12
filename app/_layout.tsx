@@ -20,6 +20,9 @@ export default function Layout() {
           <TouchableOpacity style={styles.backButton} onPress={() => router.back()}>
             <Text style={styles.backArrow}>❮</Text>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.homeButton} onPress={() => router.push('/')}>
+            <Text style={styles.homeIcon}>🏠</Text>
+          </TouchableOpacity>
         </View>
       )}
     </>
@@ -31,6 +34,9 @@ const styles = StyleSheet.create({
     position: 'absolute',
     top: Platform.OS === 'ios' ? 12 : 12,
     left: 40, // Adjusted to move the back button slightly to the right
+    right: 40, // Add spacing from right for home button
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     zIndex: 200,
   },
   backButton: {
@@ -46,5 +52,18 @@ const styles = StyleSheet.create({
   backArrow: {
     fontSize: 22,
     fontWeight: '700',
+  },
+  homeButton: {
+    width: 44,
+    height: 44,
+    borderRadius: 22,
+    backgroundColor: '#FFD200',
+    justifyContent: 'center',
+    alignItems: 'center',
+    borderWidth: 2,
+    borderColor: '#000',
+  },
+  homeIcon: {
+    fontSize: 22,
   },
 });

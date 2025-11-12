@@ -42,39 +42,41 @@ export function dateStringToSeed(dateStr: string) {
   return h;
 }
 
-/** scramble keep spaces */
+/** scramble keep spaces - scrambles letters within each term separately, ensuring no term matches original */
 export function scrambleKeepSpaces(word: string) {
-  const original = word;
-  const len = original.length;
-  const letters: string[] = [];
-  const slotsIsSpace: boolean[] = [];
-
-  for (let i = 0; i < len; i++) {
-    const ch = original[i];
-    if (ch === ' ') {
-      slotsIsSpace.push(true);
-    } else {
-      slotsIsSpace.push(false);
-      letters.push(ch.toUpperCase());
+  const terms = word.split(' ');
+  
+  const scrambleTermUntilDifferent = (term: string): string => {
+    const original = term.toUpperCase();
+    let attempts = 0;
+    const maxAttempts = 100;
+    
+    while (attempts < maxAttempts) {
+      const letters = original.split('');
+      const shuffled = shuffleArray(letters);
+      const result = shuffled.join('');
+      
+      // If this term is different from the original, it's valid
+      if (result !== original) {
+        return result;
+      }
+      attempts++;
     }
-  }
-
-  const shuffled = shuffleArray(letters);
-
-  let k = 0;
-  const outChars: string[] = [];
-  for (let i = 0; i < len; i++) {
-    if (slotsIsSpace[i]) {
-      outChars.push('_');
-    } else {
-      outChars.push(shuffled[k++] || '');
-    }
-  }
-  return outChars.join('');
+    
+    // Fallback: return the best we can get (should rarely happen)
+    return original;
+  };
+  
+  const scrambledTerms = terms.map(term => {
+    if (term.length === 0) return term;
+    return scrambleTermUntilDifferent(term);
+  });
+  
+  return scrambledTerms.join(' ');
 }
 
 export function normalizeForCompare(s: string) {
-  return s.replace(/[\s_]+/g, '').toUpperCase();
+  return s.replace(/\s+/g, '').toUpperCase();
 }
 
 /** pick words from theme/all; deterministicSeed optional */

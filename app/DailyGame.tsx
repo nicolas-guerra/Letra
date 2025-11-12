@@ -78,6 +78,7 @@ export default function DailyGame({ route, navigation }: Props) {
     dateStr: (searchParams.dateStr as string) ?? undefined,
     theme: (searchParams.theme as string) ?? undefined,
     viewDate: (searchParams.viewDate as string) ?? undefined,
+    startGame: typeof searchParams.startGame !== 'undefined' ? (searchParams.startGame === '1' || searchParams.startGame === 'true') : false,
   };
   const [mode, setMode] = useState<'daily' | 'practice' | 'view'>(params.mode ?? 'daily');
   const [timed, setTimed] = useState<boolean>(params.timed ?? true);
@@ -127,6 +128,11 @@ export default function DailyGame({ route, navigation }: Props) {
           const seedForWords = dateStringToSeed(dateStr + '::' + chosen);
           const picks = pickWordsFromTheme(wordlist as any, 10, chosen, seedForWords);
           setWords(picks);
+          // Auto-start daily game if startGame parameter is true
+          if (params.startGame) {
+            setGameStarted(true);
+            setTimeLeft(60);
+          }
         } else {
           setWords([]);
         }
@@ -136,6 +142,9 @@ export default function DailyGame({ route, navigation }: Props) {
         setRunTheme(themeToUse);
         const picks = pickWordsFromTheme(wordlist as any, 10, themeToUse ?? undefined, undefined);
         setWords(picks);
+        // Auto-start practice mode
+        setGameStarted(true);
+        setTimeLeft(timed ? 60 : 0);
       }
     })();
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -254,14 +263,13 @@ export default function DailyGame({ route, navigation }: Props) {
           <Text style={[styles.info, { fontSize: 24, fontWeight: '700' }]}>Final score: {displayedFinal}</Text>
           <View style={{ height: 12 }} />
           <Button
-            title="Play Again (same theme)"
+            title="Practice same theme?"
             onPress={() => {
               const themeQuery = runTheme ? `&theme=${encodeURIComponent(runTheme)}` : '';
               router.push(`/DailyGame?mode=practice&timed=1${themeQuery}`);
             }}
           />
           <View style={{ height: 8 }} />
-          <Button title="Back" onPress={() => router.back()} />
         </ScrollView>
       </SafeAreaView>
     );
@@ -303,7 +311,6 @@ export default function DailyGame({ route, navigation }: Props) {
               autoCorrect={false}
             />
             <View style={{ height: 12 }} />
-            <Button title="End Game" onPress={() => endGame(mode === 'daily')} />
           </View>
         )}
       </ScrollView>

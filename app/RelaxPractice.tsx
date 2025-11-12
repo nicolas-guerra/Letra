@@ -93,14 +93,14 @@ export default function RelaxPractice() {
     return (
       <SafeAreaView style={[styles.appContainer, { backgroundColor: '#FFF8E7' }]}>
         <ScrollView contentContainerStyle={{ padding: 16 }}>
-          <Text style={styles.appTitle}>Relax Practice — Results</Text>
+          <Text style={styles.appTitle}>Relax ☕ — Results</Text>
           <Text style={styles.info}>You got {score} out of {originals.length}</Text>
           <View style={{ height: 12 }} />
           <TouchableOpacity
             style={[styles.buttonPillType, { backgroundColor: '#79D475', marginTop: 16 }]}
             onPress={handlePlayAgain}
           >
-            <Text style={styles.pillTextType}>Play Again (same theme)</Text>
+            <Text style={styles.pillTextType}>Practice same theme?</Text>
           </TouchableOpacity>
           <View style={{ height: 8 }} />
           <TouchableOpacity
@@ -111,7 +111,7 @@ export default function RelaxPractice() {
               setIsPlaying(false);
             }}
           >
-            <Text style={styles.pillTextType}>Pick Different Theme</Text>
+            <Text style={styles.pillTextType}>Pick different theme</Text>
           </TouchableOpacity>
         </ScrollView>
       </SafeAreaView>
@@ -129,22 +129,29 @@ export default function RelaxPractice() {
               <TouchableOpacity
                 style={[
                   styles.buttonPillType,
-                  selectedTheme === t && { backgroundColor: '#FFF8E7' },
+                  selectedTheme === t && { backgroundColor: '#79D475' },
                 ]}
-                onPress={() => setSelectedTheme(t)}
+                onPress={() => {
+                  if (selectedTheme === t) {
+                    // If already selected, start the game
+                    handleStartPractice();
+                  } else {
+                    // If not selected, just select it
+                    setSelectedTheme(t);
+                  }
+                }}
               >
-                <Text style={styles.pillTextType}>{t}</Text>
+                <Text style={styles.pillTextType}>
+                  {selectedTheme === t ? `Start ${t}` : t}
+                </Text>
               </TouchableOpacity>
             </View>
           ))}
 
           {selectedTheme && (
-            <TouchableOpacity
-              style={[styles.buttonPillType, { backgroundColor: '#79D475', marginTop: 24 }]}
-              onPress={handleStartPractice}
-            >
-              <Text style={styles.pillTextType}>Start Practice</Text>
-            </TouchableOpacity>
+            <Text style={[styles.pillTextType, { textAlign: 'center', marginTop: 12, color: '#fff' }]}>
+              Press again to start
+            </Text>
           )}
         </ScrollView>
       </SafeAreaView>
@@ -154,7 +161,7 @@ export default function RelaxPractice() {
   return (
     <SafeAreaView style={[styles.appContainer, { backgroundColor: '#FFF8E7' }]}> 
       <ScrollView contentContainerStyle={{ padding: 16 }}>
-        <Text style={styles.appTitle}>Relax Practice</Text>
+        <Text style={styles.appTitle}>Relax ☕</Text>
         <Text style={styles.info}>Word {Math.min(index + 1, originals.length)} of {originals.length}</Text>
         <Text style={styles.scrambled}>{words[index] ?? ''}</Text>
         <TextInput
