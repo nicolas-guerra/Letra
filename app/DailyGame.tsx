@@ -2,11 +2,11 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import React, { useEffect, useRef, useState } from 'react';
-import { Button, ScrollView, Text, TextInput, View } from 'react-native';
+import { Button, ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import wordlist from '../assets/letra_wordlist.json';
+import { dateStringToSeed, normalizeForCompare, pickWordsFromTheme, scrambleKeepSpaces } from './_utils';
 import styles from './styles';
-import { dateStringToSeed, normalizeForCompare, pickWordsFromTheme, scrambleKeepSpaces } from './utils';
 
 type Props = {
   route?: any;
@@ -253,22 +253,33 @@ export default function DailyGame({ route, navigation }: Props) {
 
   if (mode === 'view' || (finalScore !== null && !gameStarted)) {
     return (
-      <SafeAreaView style={[styles.appContainer, { backgroundColor: '#FFF8E7' }]}>
+      <SafeAreaView style={[styles.appContainer, { backgroundColor: '#5DADEC' }]}>
         <ScrollView contentContainerStyle={{ padding: 16 }}>
-          <Text style={styles.appTitle}>Run Complete</Text>
-          <Text style={styles.info}>Mode: {mode === 'daily' ? 'Daily' : mode === 'practice' ? 'Practice' : 'Saved'}</Text>
-          <Text style={styles.info}>Theme: {runTheme ?? 'Random'}</Text>
-          <Text style={styles.info}>Words correct: {score}</Text>
-          <Text style={styles.info}>Time left: {timed ? `${timeLeft}s` : '—'}</Text>
-          <Text style={[styles.info, { fontSize: 24, fontWeight: '700' }]}>Final score: {displayedFinal}</Text>
+          <Text style={[styles.appTitle, { color: '#fff' }]}>Run Complete</Text>
+          <Text style={[styles.info, { color: '#fff' }]}>Mode: {mode === 'daily' ? 'Daily' : mode === 'practice' ? 'Practice' : 'Saved'}</Text>
+          <Text style={[styles.info, { color: '#fff' }]}>Theme: {runTheme ?? 'Random'}</Text>
+          <Text style={[styles.info, { color: '#fff' }]}>Words correct: {score}</Text>
+          <Text style={[styles.info, { color: '#fff' }]}>Time left: {timed ? `${timeLeft}s` : '—'}</Text>
+          <Text style={[styles.info, { fontSize: 24, fontWeight: '700', color: '#fff' }]}>Final score: {displayedFinal}</Text>
           <View style={{ height: 12 }} />
-          <Button
-            title="Practice same theme?"
+          <TouchableOpacity
+            style={[styles.buttonPillType, { backgroundColor: '#79D475', marginTop: 16 }]}
             onPress={() => {
               const themeQuery = runTheme ? `&theme=${encodeURIComponent(runTheme)}` : '';
               router.push(`/DailyGame?mode=practice&timed=1${themeQuery}`);
             }}
-          />
+          >
+            <Text style={styles.pillTextType}>Practice same theme?</Text>
+          </TouchableOpacity>
+          <View style={{ height: 8 }} />
+          {mode === 'practice' && (
+            <TouchableOpacity
+              style={[styles.buttonPillType, { marginTop: 8 }]}
+              onPress={() => router.push('/ThemeSelection')}
+            >
+              <Text style={styles.pillTextType}>Practice different theme</Text>
+            </TouchableOpacity>
+          )}
           <View style={{ height: 8 }} />
         </ScrollView>
       </SafeAreaView>
@@ -276,9 +287,9 @@ export default function DailyGame({ route, navigation }: Props) {
   }
 
   return (
-    <SafeAreaView style={[styles.appContainer, { backgroundColor: '#FFF8E7' }]}>
+    <SafeAreaView style={[styles.appContainer, { backgroundColor: '#5DADEC' }]}>
       <ScrollView contentContainerStyle={{ padding: 16 }}>
-        <Text style={styles.appTitle}>Letra — {mode === 'daily' ? 'Daily Game' : 'Practice'} {runTheme ? `(${runTheme})` : ''}</Text>
+        <Text style={[styles.appTitle, { color: '#fff' }]}>Letra — {mode === 'daily' ? 'Daily Game' : 'Practice'} {runTheme ? `(${runTheme})` : ''}</Text>
 
         {!gameStarted ? (
           <View style={{ alignItems: 'center', marginTop: 30 }}>

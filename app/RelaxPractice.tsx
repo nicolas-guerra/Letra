@@ -3,8 +3,8 @@ import React, { useRef, useState } from 'react';
 import { ScrollView, Text, TextInput, TouchableOpacity, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import wordlist from '../assets/letra_wordlist.json';
+import { normalizeForCompare, pickWordsFromTheme, scrambleKeepSpaces } from './_utils';
 import styles from './styles';
-import { normalizeForCompare, pickWordsFromTheme, scrambleKeepSpaces } from './utils';
 
 type WordList = Record<string, { word: string }[]>;
 
@@ -91,10 +91,10 @@ export default function RelaxPractice() {
 
   if (finished) {
     return (
-      <SafeAreaView style={[styles.appContainer, { backgroundColor: '#FFF8E7' }]}>
+      <SafeAreaView style={[styles.appContainer, { backgroundColor: '#5DADEC' }]}>
         <ScrollView contentContainerStyle={{ padding: 16 }}>
-          <Text style={styles.appTitle}>Relax ☕ — Results</Text>
-          <Text style={styles.info}>You got {score} out of {originals.length}</Text>
+          <Text style={[styles.appTitle, { color: '#fff' }]}>Relax ☕ — Results</Text>
+          <Text style={[styles.info, { color: '#fff' }]}>You got {score} out of {originals.length}</Text>
           <View style={{ height: 12 }} />
           <TouchableOpacity
             style={[styles.buttonPillType, { backgroundColor: '#79D475', marginTop: 16 }]}
@@ -159,10 +159,10 @@ export default function RelaxPractice() {
   }
 
   return (
-    <SafeAreaView style={[styles.appContainer, { backgroundColor: '#FFF8E7' }]}> 
+    <SafeAreaView style={[styles.appContainer, { backgroundColor: '#5DADEC' }]}> 
       <ScrollView contentContainerStyle={{ padding: 16 }}>
-        <Text style={styles.appTitle}>Relax ☕</Text>
-        <Text style={styles.info}>Word {Math.min(index + 1, originals.length)} of {originals.length}</Text>
+        <Text style={[styles.appTitle, { color: '#fff' }]}>Relax ☕</Text>
+        <Text style={[styles.info, { color: '#fff' }]}>Word {Math.min(index + 1, originals.length)} of {originals.length}</Text>
         <Text style={styles.scrambled}>{words[index] ?? ''}</Text>
         <TextInput
           style={styles.input}
@@ -183,7 +183,7 @@ export default function RelaxPractice() {
 
         {solved && (
           <View style={{ marginTop: 12 }}>
-            <Text style={[styles.info, { color: 'green', fontWeight: '700' }]}>Correct!</Text>
+            <Text style={[styles.info, { color: '#79D475', fontWeight: '700' }]}>Correct!</Text>
             <TouchableOpacity style={[styles.buttonPillType, { marginTop: 12 }]} onPress={handleNext}>
               <Text style={styles.pillTextType}>Next</Text>
             </TouchableOpacity>
@@ -192,7 +192,7 @@ export default function RelaxPractice() {
 
         {revealed && !solved && (
           <View style={{ marginTop: 12 }}>
-            <Text style={[styles.info, { fontWeight: '700' }]}>{originals[index] ?? ''}</Text>
+            <Text style={[styles.info, { fontWeight: '700', color: '#fff' }]}>{originals[index] ?? ''}</Text>
             <TouchableOpacity style={[styles.buttonPillType, { marginTop: 12 }]} onPress={handleNext}>
               <Text style={styles.pillTextType}>Next</Text>
             </TouchableOpacity>
